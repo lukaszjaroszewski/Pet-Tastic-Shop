@@ -1,0 +1,299 @@
+I want you to build a website in these languages ONLY: HTML, CSS and JavaScript for an ecommerce business based on the documentation pasted below: 
+PetTastic – E-commerce Website Documentation
+1. Overview
+PetTastic is a modern, responsive, and user-friendly e-commerce website designed to sell toys for pets (dogs, cats, birds, etc.). The website features a playful, clean design, intuitive navigation, and interactive elements to engage users and encourage purchases.
+
+2. Pages Overview
+The website will include the following pages:
+
+Homepage
+
+Shop Page (All Products)
+
+Product Detail Page
+
+Cart Page
+
+Checkout Page
+
+About Us
+
+Contact Page
+
+3. Common Layout and Navigation
+Header (Visible on All Pages)
+Logo on the top-left (e.g., "PetTastic" styled text)
+
+Navigation menu with links: Home, Shop, About Us, Contact
+
+Search bar placed centrally or top-right
+
+On the right:
+
+Cart link (with number of items)
+
+User account link (for future login feature)
+
+The header should become sticky when the user scrolls down.
+
+Footer (Visible on All Pages)
+Quick links: Home, Shop, FAQ, Contact
+
+Social media links (text only or minimal icons if needed)
+
+Newsletter subscription input with submit button
+
+Copyright
+
+4. Homepage
+Hero Section
+Full-width background image of happy pets playing
+
+Bold headline (e.g., “Make Your Pet’s Day with the Best Toys!”)
+
+Subheading and call-to-action button: “Shop Now” linking to the shop section
+
+Featured Products
+Grid layout displaying 3 or 4 products per row
+
+Each product card includes:
+
+Product image
+
+Product name
+
+Price
+
+“Add to Cart” button
+
+Why Choose Us Section
+Four columns with brief descriptions such as:
+
+Fast Delivery
+
+Eco-friendly Materials
+
+Trusted by Pet Owners
+
+24/7 Customer Support
+
+Testimonials Section
+Carousel or slider displaying 2–3 customer reviews at a time
+
+Each review includes customer name, quote, and product purchased
+
+Instagram Feed Preview
+Grid of 6 static image thumbnails
+
+Clicking on an image opens a larger version in a lightbox
+
+5. Shop Page
+Product Listing
+Sidebar filters:
+
+Category (e.g., Dog, Cat, Bird)
+
+Price range slider
+
+Product tags
+
+Sort dropdown (e.g., Price: Low to High, Popularity)
+
+Product grid similar to homepage but with all items
+
+Hover effects:
+
+Slight image zoom
+
+Option to “Quick View” or “Add to Cart”
+
+6. Product Detail Page
+Layout
+Left side: Product image gallery (main image + thumbnails)
+
+Right side:
+
+Product name
+
+Price
+
+Short description
+
+Quantity selector
+
+“Add to Cart” button
+
+Availability status
+
+Estimated delivery date
+
+Tabs Section (Below Main Info)
+Tabs for “Description”, “Reviews”, and “Care Instructions”
+
+Tabs should be switchable via JavaScript without reloading the page
+
+7. Cart Page
+Features
+Table of cart items showing:
+
+Product image
+
+Product name
+
+Quantity selector (with plus/minus buttons)
+
+Price per item
+
+Subtotal
+
+Remove option
+
+Cart summary section with:
+
+Total items
+
+Total cost
+
+“Proceed to Checkout” button
+
+JavaScript should handle quantity updates and item removal dynamically.
+
+8. Checkout Page
+Form Sections
+Billing and shipping form fields:
+
+Full name
+
+Address
+
+Email
+
+Phone number
+
+Optional delivery instructions
+
+Order summary on the side or below the form
+
+Submit button labeled “Place Order”
+
+For now, submitting the form will trigger a JavaScript confirmation message (no backend integration required).
+
+9. About Us Page
+Content
+Brief company mission statement
+
+Introduction to the team (images or text profiles)
+
+"Our Story" section explaining how and why the business was started
+
+Optional trust-building information (e.g., product safety, ethical sourcing)
+
+10. Contact Page
+Layout
+Contact form with:
+
+Name
+
+Email
+
+Subject
+
+Message
+
+Embedded Google Maps iframe showing business location
+
+Static contact details: phone, email, mailing address
+
+Form submission is simulated with JavaScript (no backend processing).
+
+11. Additional Features
+Newsletter Popup
+Triggered after a delay (e.g., 10 seconds on the homepage)
+
+Modal window prompting for email signup with a message like “Get 10% off your first order”
+
+Close button included
+
+Use localStorage to ensure the popup only appears once per user session
+
+Design Notes
+Color scheme: Soft pastel colors (light blue, beige, soft pink, white)
+
+Font: Rounded sans-serif font such as Poppins or Nunito
+
+Animations: Subtle hover effects, fade-in transitions, and sliding elements handled via CSS
+
+12. JavaScript Features Summary
+Sticky header on scroll
+
+Dynamic cart (add, remove, update totals)
+
+Carousel/slider for testimonials
+
+Tabbed interface on product detail page
+
+Form validation (Contact, Checkout, Newsletter)
+
+Popup management via localStorage
+
+Quantity selectors for cart and product pages
+
+Lightbox functionality for image galleries
+
+Color palette:
+1. Primary Accent (Buttons, Highlights, CTAs)
+Color: Soft Blue
+
+Hex: #5A9BD5
+
+Why: Calming and trustworthy, yet still energetic.
+
+2. Secondary Accent (Secondary Buttons, Highlights)
+Color: Warm Coral
+
+Hex: #FF857A
+
+Why: Friendly, inviting, and great for encouraging clicks.
+
+3. Background (Overall Page Background)
+Color: Very Light Gray / Soft Beige
+
+Hex: #F9F9F6 or #FFF8F2
+
+Why: Clean and gentle on the eyes, provides contrast without harsh white.
+
+4. Header/Footer Background
+Color: White or Light Blue Tint
+
+Hex: #FFFFFF or #E6F1FB
+
+Why: Keeps the navigation area distinct but airy and light.
+
+5. Text - Primary
+Color: Dark Gray
+
+Hex: #333333
+
+Why: Easier on the eyes than pure black, works well with light backgrounds.
+
+6. Text - Secondary / Muted
+Color: Medium Gray
+
+Hex: #777777
+
+Use: For product metadata, captions, secondary info
+
+7. Success Color (E.g. "Item added to cart")
+Color: Soft Green
+
+Hex: #8BC34A
+
+8. Error / Alert Color
+Color: Soft Red
+
+Hex: #F44336
+
+9. Borders / Dividers
+Color: Light Gray
+
+Hex: #E0E0E0
