@@ -1,0 +1,405 @@
+/*
+ * PetTastic - Responsive Stylesheet
+ * This file contains all responsive styles for different screen sizes
+ */
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .features-grid, 
+    .contact-info-grid,
+    .values-grid,
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (max-width: 992px) {
+    /* General adjustments */
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .hero {
+        height: 450px;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    /* Header adjustments */
+    .search-bar {
+        display: none; /* Hide search on smaller screens */
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        display: none; /* Hide default navigation */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    
+    .main-nav.active {
+        display: block;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .main-nav ul li {
+        width: 100%;
+    }
+    
+    .main-nav ul li a {
+        display: block;
+        padding: 10px 0;
+    }
+    
+    /* Layout adjustments */
+    .shop-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .shop-sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        bottom: 0;
+        width: 280px;
+        z-index: 1001;
+        overflow-y: auto;
+        transition: left var(--transition-medium);
+    }
+    
+    .shop-sidebar.active {
+        left: 0;
+    }
+    
+    .product-layout,
+    .story-content,
+    .checkout-content,
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Product detail page */
+    .product-images {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    /* Footer adjustments */
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    /* General adjustments */
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Cart page */
+    .cart-table thead {
+        display: none; /* Hide table headers on mobile */
+    }
+    
+    .cart-table, 
+    .cart-table tbody, 
+    .cart-table tr, 
+    .cart-table td {
+        display: block;
+        width: 100%;
+    }
+    
+    .cart-table tr {
+        margin-bottom: 20px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--card-radius);
+    }
+    
+    .cart-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        text-align: right;
+        position: relative;
+    }
+    
+    .cart-table td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        float: left;
+    }
+    
+    .cart-product {
+        justify-content: flex-end;
+    }
+    
+    .cart-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cart-coupon {
+        width: 100%;
+    }
+    
+    .cart-coupon input {
+        flex-grow: 1;
+    }
+    
+    /* Checkout page */
+    .form-row.two-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {
+    /* General adjustments */
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .hero {
+        height: 400px;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid, 
+    .contact-info-grid,
+    .values-grid,
+    .team-grid,
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Testimonials */
+    .testimonial-container {
+        padding: 0 40px;
+    }
+    
+    .testimonial {
+        left: 40px;
+        right: 40px;
+    }
+    
+    /* Navigation */
+    .logo img {
+        height: 30px;
+    }
+    
+    /* Newsletter popup */
+    .popup-content {
+        padding: 20px;
+    }
+    
+    /* Form elements */
+    .form-group input, 
+    .form-group textarea, 
+    .form-group select,
+    .btn-primary, 
+    .btn-secondary, 
+    .btn-outline {
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Devices (portrait phones, less than 576px) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 24px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-controls button {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .testimonial-container {
+        padding: 0 30px;
+    }
+    
+    .testimonial {
+        left: 30px;
+        right: 30px;
+        padding: 20px;
+    }
+    
+    .header-actions {
+        gap: 10px;
+    }
+    
+    .cart a, .account a {
+        font-size: 16px;
+    }
+    
+    .cart-count {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+}
+
+/* Filter sidebar toggle button - visible only on mobile */
+.filter-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-accent);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--hover-shadow);
+    z-index: 999;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .filter-toggle {
+        display: flex;
+    }
+    
+    /* Overlay for mobile filter sidebar */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-medium), visibility var(--transition-medium);
+    }
+    
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Close button for filter sidebar */
+    .close-sidebar {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        color: var(--text-secondary);
+        cursor: pointer;
+    }
+}
+
+/* Responsive adjustments for specific pages */
+
+/* Product detail page */
+@media (max-width: 768px) {
+    .thumbnail-images {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    
+    .thumbnail {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+    }
+}
+
+/* Contact page */
+@media (max-width: 768px) {
+    .map-container {
+        height: 250px;
+    }
+}
+
+/* Mobile navigation overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-medium), visibility var(--transition-medium);
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile-friendly modifications */
+@media (max-width: 576px) {
+    .checkout-btn,
+    .place-order-btn,
+    #contact-form .btn-primary {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    /* Fix for modals on mobile */
+    .modal-content {
+        max-width: 95%;
+    }
+    
+    /* Better spacing for FAQ on mobile */
+    .faq-question h3 {
+        font-size: 16px;
+        padding-right: 15px;
+    }
+}

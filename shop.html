@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Pet Toys - PetTastic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.svg" alt="PetTastic">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="search-bar">
+                <form>
+                    <input type="text" placeholder="Search for pet toys...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            
+            <div class="header-actions">
+                <div class="cart">
+                    <a href="cart.html">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+                <div class="account">
+                    <a href="#">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <button>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop Banner -->
+    <div class="page-banner">
+        <div class="container">
+            <h1>Shop All Pet Toys</h1>
+            <p>Find the perfect toy for your furry friend</p>
+        </div>
+    </div>
+
+    <!-- Shop Content -->
+    <section class="shop-content">
+        <div class="container">
+            <div class="shop-layout">
+                <!-- Filters Sidebar -->
+                <aside class="shop-sidebar">
+                    <div class="filter-section">
+                        <h3>Categories</h3>
+                        <ul class="category-filters">
+                            <li>
+                                <input type="checkbox" id="category-dog" value="dog">
+                                <label for="category-dog">Dog Toys</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="category-cat" value="cat">
+                                <label for="category-cat">Cat Toys</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="category-bird" value="bird">
+                                <label for="category-bird">Bird Toys</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="category-small-pet" value="small-pet">
+                                <label for="category-small-pet">Small Pet Toys</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Price Range</h3>
+                        <div class="price-slider">
+                            <div class="price-range">
+                                <input type="range" id="price-range" min="0" max="100" step="5">
+                            </div>
+                            <div class="price-inputs">
+                                <span>$<span id="price-min">0</span></span>
+                                <span>to</span>
+                                <span>$<span id="price-max">100</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3>Tags</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag">Plush</a>
+                            <a href="#" class="tag">Rubber</a>
+                            <a href="#" class="tag">Rope</a>
+                            <a href="#" class="tag">Interactive</a>
+                            <a href="#" class="tag">Chew</a>
+                            <a href="#" class="tag">Squeaky</a>
+                            <a href="#" class="tag">Catnip</a>
+                            <a href="#" class="tag">Feathers</a>
+                        </div>
+                    </div>
+
+                    <button id="apply-filters" class="btn-secondary">Apply Filters</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="shop-products">
+                    <div class="shop-top-bar">
+                        <div class="showing-products">
+                            <p>Showing <span id="product-count">12</span> products</p>
+                        </div>
+                        <div class="sort-options">
+                            <label for="sort-by">Sort by:</label>
+                            <select id="sort-by">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name-az">Name: A to Z</option>
+                                <option value="name-za">Name: Z to A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid" id="shop-products">
+                        <!-- Products will be loaded from JavaScript -->
+                    </div>
+
+                    <div class="pagination">
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                        <button class="pagination-btn">3</button>
+                        <button class="pagination-btn next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column newsletter">
+                    <h3>Join Our Newsletter</h3>
+                    <p>Get 10% off your first order when you sign up</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn-secondary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 PetTastic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
