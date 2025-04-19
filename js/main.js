@@ -480,40 +480,148 @@ function loadRelatedProducts(category) {
     }
 }
 
+// Global variables for pagination
+let currentPage = 1;
+let productsPerPage = 10;
+let filteredProducts = [];
+
 /**
  * Initialize shop page functionality
  */
 function initShopPage() {
-    loadShopProducts();
+    // Initialize with all products
+    filteredProducts = getAllProducts();
+    
+    // Load first page of products
+    loadShopProducts(1);
+    
+    // Setup other shop functionality
     setupShopFilters();
     setupProductsSorting();
     setupFilterToggle();
+    setupPagination();
 }
 
 /**
- * Load products on the shop page
+ * Load products on the shop page with pagination
+ * @param {number} page - The page number to load
  */
-function loadShopProducts() {
+function loadShopProducts(page = 1) {
     const productsContainer = document.getElementById('shop-products');
     
     if (productsContainer) {
-        // Get all products
-        const allProducts = getAllProducts();
+        // Update current page
+        currentPage = page;
+        
+        // Calculate pagination
+        const startIndex = (page - 1) * productsPerPage;
+        const endIndex = startIndex + productsPerPage;
+        const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
         
         // Clear container
         productsContainer.innerHTML = '';
         
-        // Add products
-        allProducts.forEach(product => {
+        // Add products for current page
+        paginatedProducts.forEach(product => {
             productsContainer.appendChild(createProductCard(product));
         });
         
         // Update product count
         const productCount = document.getElementById('product-count');
         if (productCount) {
-            productCount.textContent = allProducts.length;
+            productCount.textContent = filteredProducts.length;
         }
+        
+        // Update pagination UI
+        updatePaginationUI();
     }
+}
+
+/**
+ * Set up pagination controls
+ */
+function setupPagination() {
+    const paginationContainer = document.querySelector('.pagination');
+    
+    if (paginationContainer) {
+        // Clear existing buttons
+        paginationContainer.innerHTML = '';
+        
+        // Add event delegation for pagination clicks
+        paginationContainer.addEventListener('click', function(e) {
+            if (e.target.classList.contains('pagination-btn') || 
+                e.target.closest('.pagination-btn')) {
+                
+                const button = e.target.classList.contains('pagination-btn') ? 
+                    e.target : e.target.closest('.pagination-btn');
+                
+                if (button.classList.contains('next')) {
+                    if (currentPage < getTotalPages()) {
+                        loadShopProducts(currentPage + 1);
+                    }
+                } else if (button.classList.contains('prev')) {
+                    if (currentPage > 1) {
+                        loadShopProducts(currentPage - 1);
+                    }
+                } else {
+                    // Numeric buttons
+                    const pageNum = parseInt(button.textContent);
+                    if (!isNaN(pageNum)) {
+                        loadShopProducts(pageNum);
+                    }
+                }
+            }
+        });
+        
+        // Initial pagination UI setup
+        updatePaginationUI();
+    }
+}
+
+/**
+ * Update the pagination buttons based on current state
+ */
+function updatePaginationUI() {
+    const paginationContainer = document.querySelector('.pagination');
+    if (!paginationContainer) return;
+    
+    // Clear existing pagination
+    paginationContainer.innerHTML = '';
+    
+    // Get total number of pages
+    const totalPages = getTotalPages();
+    
+    // Add previous button if not on first page
+    if (currentPage > 1) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'pagination-btn prev';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        paginationContainer.appendChild(prevBtn);
+    }
+    
+    // Add page number buttons
+    for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = 'pagination-btn' + (i === currentPage ? ' active' : '');
+        pageBtn.textContent = i;
+        paginationContainer.appendChild(pageBtn);
+    }
+    
+    // Add next button if not on last page
+    if (currentPage < totalPages) {
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'pagination-btn next';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        paginationContainer.appendChild(nextBtn);
+    }
+}
+
+/**
+ * Calculate total number of pages based on filtered products
+ * @returns {number} The total number of pages
+ */
+function getTotalPages() {
+    return Math.ceil(filteredProducts.length / productsPerPage);
 }
 
 /**
@@ -552,7 +660,7 @@ function setupShopFilters() {
             const maxPrice = parseInt(priceRange.value);
             
             // Filter products
-            let filteredProducts = allProducts;
+            filteredProducts = allProducts;
             
             // Apply category filter
             if (selectedCategories.length > 0) {
@@ -571,23 +679,8 @@ function setupShopFilters() {
                 return product.price <= maxPrice;
             });
             
-            // Update product display
-            const productsContainer = document.getElementById('shop-products');
-            productsContainer.innerHTML = '';
-            
-            if (filteredProducts.length > 0) {
-                filteredProducts.forEach(product => {
-                    productsContainer.appendChild(createProductCard(product));
-                });
-            } else {
-                productsContainer.innerHTML = '<div class="no-products"><p>No products match your filters. Please try different criteria.</p></div>';
-            }
-            
-            // Update count
-            const productCount = document.getElementById('product-count');
-            if (productCount) {
-                productCount.textContent = filteredProducts.length;
-            }
+            // Reset to first page and load products
+            loadShopProducts(1);
             
             // Close mobile filter sidebar if open
             closeMobileFilterSidebar();
@@ -606,30 +699,15 @@ function setupShopFilters() {
             const allProducts = getAllProducts();
             
             // Filter by tag (simple match by tag name in product name or description)
-            const filteredProducts = allProducts.filter(product => {
+            filteredProducts = allProducts.filter(product => {
                 return (
                     product.name.toLowerCase().includes(tagValue) || 
                     product.description.toLowerCase().includes(tagValue)
                 );
             });
             
-            // Update product display
-            const productsContainer = document.getElementById('shop-products');
-            productsContainer.innerHTML = '';
-            
-            if (filteredProducts.length > 0) {
-                filteredProducts.forEach(product => {
-                    productsContainer.appendChild(createProductCard(product));
-                });
-            } else {
-                productsContainer.innerHTML = '<div class="no-products"><p>No products match this tag. Please try a different one.</p></div>';
-            }
-            
-            // Update count
-            const productCount = document.getElementById('product-count');
-            if (productCount) {
-                productCount.textContent = filteredProducts.length;
-            }
+            // Reset to first page and load products
+            loadShopProducts(1);
         });
     });
 }
@@ -702,33 +780,26 @@ function setupProductsSorting() {
     if (sortSelect) {
         sortSelect.addEventListener('change', function() {
             const selectedOption = this.value;
-            const productsContainer = document.getElementById('shop-products');
-            const products = getAllProducts();
             
-            // Sort products based on selected option
-            let sortedProducts = [...products];
-            
+            // Sort filtered products based on selected option
             switch (selectedOption) {
                 case 'price-low':
-                    sortedProducts.sort((a, b) => a.price - b.price);
+                    filteredProducts.sort((a, b) => a.price - b.price);
                     break;
                 case 'price-high':
-                    sortedProducts.sort((a, b) => b.price - a.price);
+                    filteredProducts.sort((a, b) => b.price - a.price);
                     break;
                 case 'name-az':
-                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
                     break;
                 case 'name-za':
-                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name));
+                    filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
                     break;
                 // 'featured' is default, no special sorting needed
             }
             
-            // Clear and repopulate container
-            productsContainer.innerHTML = '';
-            sortedProducts.forEach(product => {
-                productsContainer.appendChild(createProductCard(product));
-            });
+            // Reset to first page with the newly sorted products
+            loadShopProducts(1);
         });
     }
 }
